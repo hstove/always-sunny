@@ -220,6 +220,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hash-deep-merge (0.1.1)
     hashie (3.4.2)
     hitimes (1.2.2)
     html2haml (2.0.0)
@@ -234,6 +235,8 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    imdb (0.8.1)
+      nokogiri (>= 1.6.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -253,6 +256,9 @@ GEM
     kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    lazy_high_charts (1.5.4)
+      bundler (>= 1.0)
+      hash-deep-merge
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -286,10 +292,6 @@ GEM
       shellany (~> 0.0)
     nprogress-rails (0.1.6.7)
     orm_adapter (0.5.0)
-    paper_trail (4.0.0)
-      activerecord (>= 3.0, < 6.0)
-      activesupport (>= 3.0, < 6.0)
-      request_store (~> 1.1)
     pg (0.18.2)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -373,7 +375,6 @@ GEM
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     remotipart (1.2.1)
-    request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rest-client (1.8.0)
@@ -425,6 +426,8 @@ GEM
       rdoc (~> 4.0)
     sexp_processor (4.6.0)
     shellany (0.0.1)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     sidekiq (3.5.0)
       celluloid (~> 0.17.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -533,10 +536,12 @@ DEPENDENCIES
   has_scope
   hashie
   httparty
+  imdb
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
   launchy
+  lazy_high_charts
   listen
   lorem-ipsum
   memcachier
@@ -545,7 +550,6 @@ DEPENDENCIES
   nested_form
   nokogiri
   nprogress-rails
-  paper_trail
   pg
   public_activity
   quiet_assets
@@ -562,6 +566,7 @@ DEPENDENCIES
   ruby_gntp
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers
   sidekiq
   simplecov
   split

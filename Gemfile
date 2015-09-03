@@ -55,7 +55,7 @@ gem 'awesome_print'
 gem 'google-analytics-rails'
 gem 'acts_as_list'
 gem 'ejs'
-gem 'paper_trail'
+# gem 'paper_trail'
 gem 'mixpanel'
 gem 'stripe'
 gem 'nokogiri'
@@ -80,6 +80,8 @@ gem 'bootswatch-rails'
 gem 'nprogress-rails'
 gem 'sidekiq'
 gem 'rails_admin'
+gem 'imdb'
+gem 'lazy_high_charts'
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -109,4 +111,5 @@ group :test, :development do
   gem 'simplecov', require: false
   gem 'guard-sidekiq'
   gem 'guard-rspec'
+  gem 'shoulda-matchers'
 end
