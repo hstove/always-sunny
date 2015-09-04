@@ -96,22 +96,48 @@
         %em Dennis Gets Divorced
       as Dennis is trying to sneak away from a snoring Maureen Ponderosa.
 
+    %p
+      There are three episodes that don't follow the pattern of telling you what time
+      and day it is. Two of them are Part 2's (
+      %em The Gange Gets Whacked: Part 2
+      and
+      %em Mac & Charlie Die: Part 2
+      ).
+      The other one is
+      = succeed "," do
+        %em The Gang Makes Lethal Weapon 6
+      which starts right out with Chief Lazarus being brought back to life.
+
   %section
     %h2 Credits
 
     %p
+      Built by
+      = succeed "." do
+        = link_to "Hank Stoever", "http://hankstoever.com", target: :_blank
+
+    %p
       This website is a typical Ruby on Rails app. First, I
       = succeed "," do
-        imported data from IMDB using their API
+        = link_to "imported data from IMDB using their API", "https://github.com/hstove/always-sunny/blob/master/db/seeds.rb", target: :_blank
       then I manually went through every episode on Netflix and set the 'start date'
       of each episode.
       The main chart is built with
       = succeed "," do
-        Highcharts
+        = link_to "HighCharts", "http://www.highcharts.com/", target: :_blank
       which made the chart-building really easy.
+      The page is styled using
+      = succeed "." do
+        = link_to "tufte.css", "http://www.daveliepmann.com/tufte-css/"
 
     %p
-      Thanks to the team behind
+      This website is open source, so feel free to read the code, add issues,
+      and make contributions
+      = succeed "." do
+        = link_to "on Github", "https://github.com/hstove/always-sunny", target: :_blank
+
+    %p
+      Most of all, thanks to the team behind
       %em It's Always Sunny in Philadelphia
       for such a great show!
 
