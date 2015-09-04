@@ -1,7 +1,7 @@
 @font-face { font-family: ETBembo;
-             src: url("/assets/ETBembo-RomanLF.ttf"); }
+             src: asset-url("ETBembo-RomanLF.ttf"); }
 @font-face { font-family: ETBembo;
-             src: url("/assets/ETBembo-DisplayItalic.ttf");
+             src: asset-url("ETBembo-DisplayItalic.ttf");
              font-weight: normal;
              font-style: italic; }
 
