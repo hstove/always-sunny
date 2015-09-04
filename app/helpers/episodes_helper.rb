@@ -1,6 +1,8 @@
 module EpisodesHelper
   def episodes_data
     seasons = @episodes.group_by(&:season)
+    min_rating = 10
+    max_rating = 0
     series = seasons.map do |season, episodes|
       episodes.map do |episode|
         starts_at = episode.starts_at.change(offset: 0)
@@ -14,24 +16,33 @@ module EpisodesHelper
           min: starts_at.strftime('%M').to_i
         )
 
-        puts [beginning_of_week, day_of_week, weekday, time_of_day].join(', ')
+        rating = episode.imdb_rating
+        min_rating = rating if rating < min_rating
+        max_rating = rating if rating > max_rating
 
         {
           x: time_of_day.to_i * 1000,
           y: weekday.to_i * 1000,
-          z: episode.imdb_rating,
+          z: rating,
           name: episode.title,
           data: {
             director: episode.director,
             plot: episode.description,
-            dateString: episode.starts_at.strftime('%A at %l:%M %P'),
+            dateString: episode.starts_at.strftime('%l:%M%P on a %A'),
             episode: episode.number,
-            season: episode.season
+            season: episode.season,
+            poster: episode.poster_url
           }
         }
       end
     end
 
-    content_tag :input, nil, type: 'hidden', value: series.to_json, id: 'episodes-data'
+    data = {
+      series: series,
+      max_rating: max_rating,
+      min_rating: min_rating
+    }
+
+    content_tag :input, nil, type: 'hidden', value: data.to_json, id: 'episodes-data'
   end
 end
