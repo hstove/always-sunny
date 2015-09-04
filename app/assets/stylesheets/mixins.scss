@@ -1,0 +1,154 @@
+@mixin border-radius($tl,$tr:null,$br:null,$bl:null) {
+  @if $tr == null {
+    $tr : $tl;
+  }
+  @if $br == null {
+    $br : $tl;
+  }
+  @if $bl == null {
+    $bl : $tr;
+  }
+  -webkit-border-radius: $tl $tr $br $bl !important;
+  -moz-border-radius: $tl $tr $br $bl  !important;
+  -ms-border-radius: $tl $tr $br $bl  !important;
+  -o-border-radius: $tl $tr $br $bl  !important;
+  border-radius: $tl $tr $br $bl  !important;
+}
+
+@mixin panel-shadow() {
+  -webkit-box-shadow:  0px 0px 5px 0px rgba(2, 2, 2, 0.15);
+  box-shadow:  0px 0px 5px 0px rgba(2, 2, 2, 0.15);
+}
+
+@mixin drop-shadow( $horizontal:0px, $vertical:0px, $blur:5px, $spread:0, $rgba:rgba(2, 2, 2,0.15) ) {
+  @if $horizontal != none {
+    -webkit-box-shadow: $horizontal $vertical $blur $spread $rgba;
+    -moz-box-shadow: $horizontal $vertical $blur $spread $rgba;
+    box-shadow: $horizontal $vertical $blur $spread $rgba;
+  } @else {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+@mixin gradient-background( $startColor, $endColor ) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-image: -moz-linear-gradient(top, $startColor, $endColor);
+  background-image: -ms-linear-gradient(top, $startColor, $endColor);
+  background-image: -o-linear-gradient(top, $startColor, $endColor);
+  background-image: linear-gradient(top, $startColor, $endColor);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}');";
+  filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}');";
+
+}
+
+@mixin gradient-radial( $startColor, $endColor ) {
+  background: $startColor; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  $startColor 0%, $endColor 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$startColor), color-stop(100%,$endColor)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  $startColor 0%,$endColor 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  $startColor 0%,$endColor 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  $startColor 0%,$endColor 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  $startColor 0%,$endColor 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="'" + $startColor + "'", endColorstr="'" + $endColor + "'",GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+@mixin transform-value( $value ) {
+  -webkit-transform: $value;
+  -moz-transform:    $value;
+  -ms-transform:     $value;
+  -o-transform:      $value;
+  transform:         $value;
+}
+
+@mixin transform-scale( $scale ) {
+  -webkit-transform:scale( $scale, 1.0);
+  -moz-transform:scale($scale, 1.0);
+  -ms-transform:scale($scale, 1.0);
+  -o-transform:scale($scale, 1.0);
+  transform:scale($scale,1.0);
+//  scale(1.1, 1.0);
+}
+
+@mixin transition-ease( $time ) {
+  -webkit-transition: all $time ease-out;
+  -moz-transition: all $time ease-out;
+  -o-transition: all $time ease-out;
+  -ms-transition: all $time ease-out;
+  transition: all $time ease-out;
+}
+
+@mixin transition( $value ) {
+  -webkit-transition: $value;
+  -moz-transition:    $value;
+  -ms-transition:     $value;
+  -o-transition:      $value;
+  transition:         $value;
+}
+
+@mixin transform-rotate( $value ) {
+  -webkit-transform: rotate($value);
+  -moz-transform:    rotate($value);
+  -ms-transform:     rotate($value);
+  -o-transform:      rotate($value);
+  transform:         rotate($value);
+}
+
+@mixin background-opacity($color, $opacity: 0.5) {
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
+
+@mixin placeholder-color( $color ) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &:-moz-placeholder {
+    color: $color
+  }
+
+  &::-moz-placeholder {
+    color: $color
+  }
+
+  &:-ms-input-placeholder {
+    color: $color
+  }
+}
+
+/*
+** Mixin: generate-alert
+**
+**    @include generate-alert("success", $clr-success, "icons/check-circle.svg");
+**
+** Generates the basic look for an alert, color, and icon.
+**
+** @param name: the name of the alert, ex. "success", "danger"
+** @param color: the accent color, i.e. the right border and title color
+** @param iconPath: the path to the icon, must be compatible with image-path()
+*/
+
+@mixin generate-notice( $name, $color, $iconPath ) {
+  .notice-#{$name},
+  .alert-#{$name} {
+    border-left: 10px solid $color;
+
+    &:before {
+      background: url(image-path($iconPath)) no-repeat center center;
+    }
+
+    .notice__title,
+    .alert__title {
+      color: $color;
+    }
+  }
+}
+
+// Covert pixels to ems
+@function em($px, $base: $base-font-size) {
+  @return ($px / $base) * 1em;
+}

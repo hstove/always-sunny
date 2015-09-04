@@ -1,0 +1,495 @@
+@import "bootstrap/variables";
+@import "mixins";
+
+// Specifies xs ( aka mobile ) grid
+$grid-xs: "(max-width: " + $screen-xs-max + ")";
+
+// Specifies sm ( aka tablet ) grid
+$grid-sm: "(min-width: " + $screen-sm-min + ") and (max-width: " + $screen-sm-max + ")";
+
+// Specifies sm ( aka tablet ) grid and all grid sizes above
+$grid-sm-plus: "(min-width: " + $screen-sm-min + ")";
+
+// Specifies md grid ( aka laptop )
+$grid-md: "(min-width: " + $screen-md-min + ") and (max-width: " + $screen-md-max + ")";
+
+// Specifies md grid ( aka laptop ) and all grid sizes above
+$grid-md-plus: "(min-width: " + $screen-md-min + ")";
+
+// Specifies md grid ( aka laptop ) and all grid sizes below
+$grid-md-minus: "(max-width: " + $screen-md-max + ")";
+
+// Specifies lg grid ( aka desktop )
+$grid-lg: "(min-width: " + $screen-lg-min + ")";
+
+// Specifies xl grid ( aka for extreme use )
+$grid-xl: "(min-width: 1700px)";
+
+.is-hidden    { display:    none !important; }
+.is-invisible { visibility: none !important; }
+
+.block        { display: block        !important; }
+.inline       { display: inline       !important; }
+.inline-block { display: inline-block !important; }
+
+.ovh { overflow: hidden !important; }
+
+.italic { font-style: italic; }
+.italic-lt { font-style: italic;  font-weight: 300; }
+.italic-reg { font-style: italic;  font-weight: 400; }
+.italic-bld { font-style: italic;  font-weight: 500; }
+.bold,.strong { font-weight: 500; }
+.reg { font-weight: 400; }
+
+
+.left  { float: left  !important; }
+.right { float: right !important; }
+
+
+.txt-l,.text-left   { text-align: left   !important; }
+.txt-c,.text-center { text-align: center !important; }
+.txt-r,.text-right  { text-align: right  !important; }
+.txt-lte { font-weight: 300; }
+.txt-reg { font-weight: 400; }
+.txt-bld { font-weight: 500; }
+/* .txt--danger { color: $clr-del-dark } */
+.txt--lg { font-size: 18px; }
+.txt--xl { font-size: 48px; }
+.txt-upper { text-transform: uppercase !important; }
+.txt--normal { text-transform: none !important; font-variant: normal !important; }
+
+.txt--line2 {
+  line-height: 2em;
+}
+
+.txt--whiteblock {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.alink--underlined {
+  text-decoration: underline;
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+.alink--med-dark {
+  /* color:  $clr-prim-med-dark; */
+  &:hover, &:focus {
+    /* color: $clr-prim; */
+  }
+}
+
+.m0   { margin: 0 !important; }
+.m1   { margin: 1em !important; }
+.m2   { margin: 2em !important; }
+.mt0  { margin-top:     0em !important; }
+.mt1  { margin-top:     1em !important; }
+.mt2  { margin-top:     2em !important; }
+.mt3  { margin-top:     3em !important; }
+.mr0  { margin-right:   0em !important; }
+.mr03  { margin-right:  .3em !important; }
+.mr05  { margin-right:  .5em !important; }
+.mr1  { margin-right:   1em !important; }
+.mr2  { margin-right:   2em !important; }
+.mb0  { margin-bottom:  0em !important; }
+.mb1  { margin-bottom:  1em !important; }
+.mb2  { margin-bottom:  2em !important; }
+.mb3  { margin-bottom:  3em !important; }
+.mb03  { margin-bottom:  .3em !important; }
+.ml0  { margin-left:    0em !important; }
+.ml1  { margin-left:    1em   !important; }
+.ml2  { margin-left:    2em   !important; }
+.mtb1 { margin-top:     1em !important; margin-bottom:     1em !important;}
+.mtb2 { margin-top:     2em !important; margin-bottom:     2em !important;}
+.mtb3 { margin-top:     3em !important; margin-bottom:     3em !important;}
+.mt10p { margin-top:    10px !important;}
+.mb10p { margin-bottom: 10px !important;}
+.mt5p { margin-top:    5px !important;}
+.mb5p { margin-bottom: 5px !important;}
+
+// this is to make the row extend to the left and right edges of its containing ".l-wrap" div
+.mlneg36{ margin-left:    -36px !important }
+.mrneg36{ margin-right:   -36px !important }
+
+.grade-breakdown-mb15 {
+  margin-bottom: 15px;
+  margin-top: -25px;
+}
+
+// not sure I like this but it's to add bootstraps default margin to elements that have a bg color
+.mrl15 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.mrl0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.p0   { padding: 0 !important; }
+.p05  { padding: 0.5em !important; }
+.p1   { padding: 1em !important; }
+.p2   { padding: 2em !important; }
+.p3   { padding: 3em !important; }
+.plr02   { padding-left: 0.2em !important; padding-right: 0.2em !important; }
+.pt0  { padding-top:    0em !important; }
+.pt1  { padding-top:    1em !important; }
+.pt2  { padding-top:    2em !important; }
+.pt3  { padding-top:    3em !important; }
+.pr0  { padding-right:  0em !important; }
+.pr1  { padding-right:  1em !important; }
+.pr2  { padding-right:  2em !important; }
+.pr3  { padding-right:  3em !important; }
+.pr4  { padding-right:  4em !important; }
+.pr5  { padding-right:  5em !important; }
+.pb0  { padding-bottom: 0em !important; }
+.pb1  { padding-bottom: 1em !important; }
+.pb2  { padding-bottom: 2em !important; }
+.pb3  { padding-bottom: 3em !important; }
+.pb4  { padding-bottom: 4em !important; }
+.pl0  { padding-left:   0em !important; }
+.pl1  { padding-left:   1em !important; }
+.pl2  { padding-left:  2em !important; }
+.pl3  { padding-left:  3em !important; }
+.pl4  { padding-left:  4em !important; }
+.pl5  { padding-left:  5em !important; }
+.ptb0 { padding-top: 0em !important; padding-bottom: 0em !important; }
+.ptb1 { padding-top: 1em !important; padding-bottom: 1em !important; }
+.ptb2 { padding-top: 2em !important; padding-bottom: 2em !important; }
+
+.w100, .full { width: 100% !important; }
+.w-auto { width:auto !important; }
+
+.rel { position: relative; }
+.abs { position: absolute; }
+.fxd { position: fixed; }
+
+//.row-dz-img-right {
+//  margin-right: 250px;
+//}
+
+.center {
+  float: none;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.center-absolutely {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  @include transform-value(translate(-50%, -50%));
+}
+/*
+.border-left {
+  border-left: 1px solid $clr-prim-x-dark;
+}
+
+.border-left--med-light {
+  border-left: 1px solid $clr-prim-med-light;
+}
+
+.border-right {
+  border-right: 1px solid $clr-prim-x-dark;
+}
+
+.border-right--med-light {
+  border-right: 1px solid $clr-prim-med-light;
+}
+
+.border-top {
+  border-top: 1px solid $clr-prim-x-dark;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $clr-prim-x-dark;
+} */
+
+.no-border {
+  border: none !important;
+}
+
+.no-border-top {
+  border-top: none !important;
+}
+
+.no-border-bottom {
+  border-bottom: none !important;
+}
+
+.no-bg-image {
+  background-image: none !important;
+}
+
+.sym {
+  font-size: 0.7em;
+}
+
+.dis-blk, .block        { display: block        !important; }
+.dis-inl, .inline       { display: inline       !important; }
+.dis-inb, .inline-block { display: inline-block !important; }
+.dis-tbl { display: table !important }
+.dis-tbl-row { display: table-row !important; }
+.dis-tbl-cel { display: table-cell !important }
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.valgn-top { vertical-align: top }
+.valgn-mid { vertical-align: middle }
+.valgn-bot { vertical-align: bottom }
+.valgn-sup { vertical-align: super }
+.valgn-sub { vertical-align: sub }
+.valgn-bln { vertical-align: baseline }
+
+.truncate{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1em;
+  //TODO: we should consider removing the padding-right and fixing whatever tables will be broken by adding one of the 'p1' classes above etc.;
+}
+
+// Combo with the above .truncate class to enable truncation on initially inline elements
+.truncate--inline {
+  display: inline-block;
+  width: 100%;
+}
+
+.disabled {
+  opacity: .3 !important;
+  cursor: default !important;
+}
+
+.clb {
+  clear: both;
+}
+
+.dyn-txt--light {
+  color: #FFF !important;
+}
+
+/* .dyn-txt--dark {
+  color: $clr-prim-x-dark !important;
+}
+ */
+// Rotations and flipping
+%rotate-0 {
+  @include transform-value(rotate(0deg));
+}
+
+%rotate-90 {
+  @include transform-value(rotate(90deg));
+}
+
+%rotate-90-right {
+  @include transform-value(rotate(-90deg));
+}
+
+%rotate-180 {
+  @include transform-value(rotate(180deg));
+}
+
+%rotate-270 {
+  @include transform-value(rotate(270deg));
+}
+
+%flip-horizontal {
+  @include transform-value(scale(-1, 1));
+}
+
+%flip-vertical {
+  @include transform-value(scale(1, -1));
+}
+
+.rotate-0 {
+  @extend %rotate-0;
+}
+
+.rotate-90 {
+  @extend %rotate-90;
+}
+
+.rotate-90-right {
+  @extend %rotate-90-right;
+}
+
+.rotate-180 {
+  @extend %rotate-180;
+}
+
+.rotate-270 {
+  @extend %rotate-270;
+}
+
+.flip-horizontal {
+  @extend %flip-horizontal;
+}
+
+.flip-vertical {
+  @extend %flip-vertical;
+}
+
+/*
+** This adds a semi-transparent overlay to containers.
+** It should be used when a background image needs to be
+** "darkened".
+**
+** Note, if you experience z-index issues, i.e. the overlay
+** is covering child content, try setting the children's position,
+** relative or absolute depending on your application.
+*/
+
+.has-transparent-overlay {
+
+ &:before {
+  content: '';
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+ }
+}
+
+
+/*
+** Styling for the "read more" and "read less" functionality
+*/
+
+a.read-more, a.read-less { display: none; cursor: pointer; }
+
+/*
+** this makes elements hidden from view but readable by screen readers for accessibility
+** e.g. in the survey charts, we provide a table of the data for screen readers
+*/
+
+.hidden-readable {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+/*
+** Media adjustments
+*/
+
+@media #{$grid-md} {
+  .md-no-border {
+    border: none !important;
+  }
+}
+
+@media #{$grid-sm} {
+  .sm-left {
+    float: left !important;
+  }
+
+  .sm-right {
+    float: right !important;
+  }
+
+  .sm-text-left {
+    text-align: left !important;
+  }
+
+  .sm-text-right {
+    text-align: right !important;
+  }
+
+  .sm-pl0 {
+    padding-left: 0 !important;
+  }
+
+  .sm-pr0 {
+    padding-right: 0 !important;
+  }
+
+  .sm-no-border {
+    border: none !important;
+  }
+
+  .sm-display-none,
+  .sm-hidden {
+    display: none;
+  }
+}
+
+@media #{$grid-xs} {
+  .h1, h1 {
+    font-size: 36px;
+  }
+  .xs-left {
+    float: left !important;
+  }
+
+  .xs-right {
+    float: right !important;
+  }
+
+  .xs-text-left {
+    text-align: left !important;
+  }
+
+  .xs-text-center {
+    text-align: center !important;
+  }
+
+  .xs-text-right {
+    text-align: right !important;
+  }
+  .xs-pl0 {
+    padding-left: 0 !important;
+  }
+  .xs-pr0 {
+    padding-right: 0 !important;
+  }
+  .xs-pl1 {
+    padding-left: 1em !important;
+  }
+  .xs-pr1 {
+    padding-right: 1em !important;
+  }
+  .xs-pt1 {
+    padding-top: 1em !important;
+  }
+  .xs-pb1 {
+    padding-bottom: 1em !important;
+  }
+  .xs-pl2 {
+    padding-left: 2em !important;
+  }
+  .xs-pr2 {
+    padding-right: 2em !important;
+  }
+
+  .xs-pb0 { padding-bottom: 0em !important; }
+  .xs-pb1 { padding-bottom: 1em !important; }
+  .xs-pb2 { padding-bottom: 2em !important; }
+
+  .xs-m0  { margin: 0 !important; }
+  .xs-mb0 { margin-bottom: 0em !important; }
+  .xs-mb1 { margin-bottom: 1em !important; }
+  .xs-mb2 { margin-bottom: 2em !important; }
+
+  .xs-no-border {
+    border: none !important;
+  }
+  .xs-display-none,
+  .xs-hidden {
+    display: none;
+  }
+
+  .xs-block {
+    display: block !important;
+  }
+}
