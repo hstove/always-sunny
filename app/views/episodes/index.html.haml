@@ -1,4 +1,118 @@
-.col-md-12
-  = episodes_data
-  #episodes_chart
+%article
+  %h1
+    When Do
+    %em Always Sunny
+    Episodes Start?
+  %p.subtitle Hank Stoever
+  %figure.fullwidth
+    = episodes_data
+    #episodes_chart
+  %section
+    %h2 What is this?
+    %p
+      The above chart plots the different day of the week and time of day that every
+      %em 'Always Sunny'
+      episode starts. Every episode begins by stating
+      the current time and day of week. It looks like this:
+
+    %figure
+      = image_tag "http://i.imgur.com/aAQ9R0S.gif", class: 'body__img'
+      %figcaption
+        The starting sequence of
+        %em Mac and Dennis Break Up
+
+    %p
+      %span.marginnote
+        = image_tag "https://camo.githubusercontent.com/eb7fed19aace71bbdf9fd465fc55c41a86cc934e/68747470733a2f2f6769746875622d696d616765732e73332e616d617a6f6e6177732e636f6d2f626c6f672f323031322f6772617068732e70756e6368636172642e706e67", class: 'body__img'
+        Github's
+        = succeed "," do
+          = link_to "punchcard graph", "https://github.com/hstove/issue_stats/graphs/punch-card", target: :_blank
+        an inspiration
+
+      It should be implied that I am a mega-fan of
+      %em Always Sunny.
+      As part of my fandom, I've been curious about the distribution of when these episodes
+      start, and if there are any patterns. I've wanted to plot them like the
+      'punchcard' graph on Github does.
+
+    %p
+      So, I went ahead and made it, and you can see the result up top.
+
+  %section
+    %h2.mt3 Insights
+    %p
+      Most episodes seem to start in the middle of the day on a weekday. They often
+      start as a typical 'day in the life' of the gang, then something happens and the
+      plot gets going.
+
+    - days = @episodes.group_by {|e| e.starts_at.strftime('%A') }
+    .table-wrapper
+      %table
+        %thead
+          %tr
+            %th
+            %th # of Episodes
+            %th Average Time
+        %tbody
+          - %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday}.each do |day|
+            %tr
+              %td.text= day
+              %td= days[day].count
+              - average_date = days[day].map {|e| e.starts_at.to_i }.inject(:+) / days[day].size
+              %td= Time.at(average_date).to_datetime.utc.strftime('%l:%M %P')
+
+    %p
+      Interestingly, the most common day is Monday, and it gets less common until the weekend hits.
+      From a plot device perspective, I find this intriguing, as Monday and the beginning of the
+      weekend seem like two good times to start a story.
+
+    %p
+      %span.marginnote
+        = image_tag "http://i.imgur.com/aD8GSKX.png", class: 'body__img'
+      Only one episode starts on Sunday. Appropriately, it begins with Mac confessing
+      to a priest in
+      = succeed "." do
+        %em How Mac Got Fat
+      The next-closest thing is another Mac-themed episode,
+      = succeed "," do
+        %em Mac Day
+      which starts at 11:55pm on a Saturday night, just in time to start
+      Mac Day on a Sunday.
+
+    %p.pt3
+      %span.marginnote
+        = image_tag "http://i.imgur.com/v6h3ecc.png", class: 'body__img'
+        %em "We're gonna go America all over their asses."
+      The latest beginning of an episode is 2:30 am on a Friday night (Saturday morning), the beginning of
+      = succeed "." do
+        %em Charlie Goes America All Over Everybody's Ass
+      The gang is cleaning up after closing the bar and shooting the shit.
+      Dennis pisses off Charlie by blowing smoke in his face, which he
+      believes is within his constitutional rights.
+
+    %p
+      The earliest start to an episode is in
+      = succeed "," do
+        %em Dennis Gets Divorced
+      and Dennis is trying to sneak away from a snoring Maureen Ponderosa.
+
+  %section
+    %h2 Credits
+
+    %p
+      This website is a typical Ruby on Rails app. First, I
+      = succeed "," do
+        imported data from IMDB using their API
+      then I manually went through every episode on Netflix and set the 'start date'
+      of each episode.
+      The main chart is built with
+      = succeed "," do
+        Highcharts
+      which made the chart-building really easy.
+
+    %p
+      Thanks to the team behind
+      %em It's Always Sunny in Philadelphia
+      for such a great show!
+
 = render 'disqus'
