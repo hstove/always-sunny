@@ -3,6 +3,17 @@ module EpisodesHelper
     seasons = @episodes.group_by(&:season)
     min_rating = 10
     max_rating = 0
+
+    grouped = @episodes.group_by(&:starts_at_formatted)
+    grouped.each do |date, episodes|
+      if episodes.size > 1
+        episodes.each_with_index do |episode, index|
+          episode.offset += index
+        end
+        puts [date, episodes.map(&:title)].join(', ')
+      end
+    end
+
     series = seasons.map do |season, episodes|
       episodes.map do |episode|
         starts_at = episode.starts_at.change(offset: 0)
@@ -10,6 +21,9 @@ module EpisodesHelper
         day_of_week = starts_at.strftime('%u').to_i
         beginning_of_week = DateTime.now.utc.beginning_of_week
         weekday = beginning_of_week + (day_of_week - 1).days
+        if episode.offset > 0
+          weekday += (episode.offset * 2).hours
+        end
 
         time_of_day = beginning_of_week.change(
           hour: starts_at.strftime('%k').to_i,
@@ -28,13 +42,17 @@ module EpisodesHelper
           data: {
             director: episode.director,
             plot: episode.description,
-            dateString: episode.starts_at.strftime('%l:%M%P on a %A'),
+            dateString: episode.starts_at_formatted,
             episode: episode.number,
             season: episode.season,
             poster: episode.poster_url
           }
         }
       end
+    end
+
+    series.each do |seasons|
+
     end
 
     data = {
