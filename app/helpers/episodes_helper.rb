@@ -1,29 +1,37 @@
 module EpisodesHelper
-  def episodes_chart
-    series = @episodes.map do |episode|
-      day_of_week = episode.starts_at.strftime('%u').to_i
-      minutes_in_day = episode.starts_at - episode.starts_at.beginning_of_day
-      rating = episode.imdb_rating
+  def episodes_data
+    seasons = @episodes.group_by(&:season)
+    series = seasons.map do |season, episodes|
+      episodes.map do |episode|
+        starts_at = episode.starts_at.change(offset: 0)
 
-      [minutes_in_day, day_of_week, rating]
-    end
-    chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title text: 'All Episodes'
-      f.chart type: 'bubble', zoomType: 'xy'
-      f.series data: series
-      f.yAxis [
+        day_of_week = starts_at.strftime('%u').to_i
+        beginning_of_week = DateTime.now.utc.beginning_of_week
+        weekday = beginning_of_week + (day_of_week - 1).days
+
+        time_of_day = beginning_of_week.change(
+          hour: starts_at.strftime('%k').to_i,
+          min: starts_at.strftime('%M').to_i
+        )
+
+        puts [beginning_of_week, day_of_week, weekday, time_of_day].join(', ')
+
         {
-          min: 0,
-          max: 8
+          x: time_of_day.to_i * 1000,
+          y: weekday.to_i * 1000,
+          z: episode.imdb_rating,
+          name: episode.title,
+          data: {
+            director: episode.director,
+            plot: episode.description,
+            dateString: episode.starts_at.strftime('%A at %l:%M %P'),
+            episode: episode.number,
+            season: episode.season
+          }
         }
-      ]
-      f.xAxis [
-        {
-          min: 0,
-        }
-      ]
+      end
     end
 
-    high_chart 'episodes_chart', chart
+    content_tag :input, nil, type: 'hidden', value: series.to_json, id: 'episodes-data'
   end
 end
