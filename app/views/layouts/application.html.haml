@@ -6,7 +6,7 @@
       - if content_for? :title
         = yield(:title)
         = " - "
-      New Application
+      When do Always Sunny episodes start?
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag "application"
@@ -17,5 +17,4 @@
     = analytics_init if Rails.env.production?
 
   %body
-    .container
-      = yield
+    = yield
