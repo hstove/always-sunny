@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903171554) do
+ActiveRecord::Schema.define(version: 20150904215716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,13 @@ ActiveRecord::Schema.define(version: 20150903171554) do
     t.integer  "number"
     t.text     "description"
     t.string   "title"
-    t.string   "day_of_week"
-    t.integer  "hour_of_day"
-    t.integer  "time_of_hour"
     t.integer  "length"
     t.datetime "air_date"
     t.string   "director"
     t.text     "poster_url"
     t.float    "imdb_rating"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.datetime "starts_at"
   end
 
