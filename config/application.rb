@@ -15,6 +15,7 @@ config.generators do |g|
   g.template_engine :haml
   g.test_framework :rspec
 end
+    config.assets.paths << Rails.root.join('/app/assets/fonts')
 
 require 'open-uri'
 uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379")
