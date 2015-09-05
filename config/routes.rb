@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # resources :episodes
+  resources :episodes, only: [:index]
 
   root 'episodes#index'
   # The priority is based upon order of creation: first created -> highest priority.

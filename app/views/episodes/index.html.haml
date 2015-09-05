@@ -11,9 +11,9 @@
     %section
       %h2 What is this?
       %p
-        The above chart plots the different day of the week and time of day that every
+        The above chart plots the different time and day that every
         %em 'Always Sunny'
-        episode starts. Every episode begins by stating
+        episode starts. Each episode begins by stating
         the current time and day of week. It looks like this:
 
       %figure
@@ -72,6 +72,8 @@
       %p
         %span.marginnote
           = image_tag "http://i.imgur.com/aD8GSKX.png", class: 'body__img'
+          %em
+            "We are about to officially begin Mac Day"
         Only one episode starts on Sunday. Appropriately, it begins with Mac confessing
         to a priest in
         = succeed "." do
@@ -81,23 +83,6 @@
           %em Mac Day
         which starts at 11:55pm on a Saturday night, just in time to start
         Mac Day on a Sunday.
-
-      %p.pt3
-        %span.marginnote
-          = image_tag "http://i.imgur.com/v6h3ecc.png", class: 'body__img'
-          %em "We're gonna go America all over their asses."
-        The latest beginning of an episode is 2:30 am on a Friday night (Saturday morning), the beginning of
-        = succeed "." do
-          %em Charlie Goes America All Over Everybody's Ass
-        The gang is cleaning up after closing the bar and shooting the shit.
-        Dennis pisses off Charlie by blowing smoke in his face, which he
-        believes is within his constitutional rights.
-
-      %p
-        The earliest start to an episode is in
-        = succeed "," do
-          %em Dennis Gets Divorced
-        as Dennis is trying to sneak away from a snoring Maureen Ponderosa.
 
       %p
         There are three episodes that don't follow the pattern of telling you what time
@@ -112,12 +97,27 @@
         which starts right out with Chief Lazarus being brought back to life.
 
       %p
+        %span.marginnote
+          = image_tag "http://i.imgur.com/v6h3ecc.png", class: 'body__img'
+          %em "We're gonna go America all over their asses."
+        The latest beginning of an episode is 2:30 am on a Friday night (Saturday morning), the beginning of
+        = succeed "." do
+          %em Charlie Goes America All Over Everybody's Ass
+        The gang is cleaning up after closing the bar and shooting the shit.
+        Dennis pisses off Charlie by blowing smoke in his face, which he
+        believes is within his constitutional rights.
+
+      %p
+        The earliest start to an episode is in
+        = succeed "," do
+          %em Dennis Gets Divorced
+        as Dennis is trying to sneak away from a snoring Maureen Ponderosa at 7:30am on a Monday.
+
+      %p
         There are a few groups of episodes that all start at the same time.
         In the chart, you can tell by the episodes that get stacked on top of
-        each other. The most common day and time is
-        = succeed "," do
-          %em 11:00am on a Tuesday
-        with 5 episodes starting at that time, with 3 of them in Season 5 alone.
+        each other. The most common day and time is 11:00am on a Tuesday,
+        with 5 episodes starting at that time, and 3 of them are in in Season 5 alone.
 
     %section
       %h2 Credits
@@ -146,6 +146,12 @@
         and make contributions
         = succeed "." do
           = link_to "on Github", "https://github.com/hstove/always-sunny", target: :_blank
+        You can also download the data
+        = succeed "," do
+          = link_to "in CSV format", episodes_path(format: :csv)
+        or
+        = succeed "." do
+          = link_to "in JSON format", episodes_path(format: :json)
 
       %p
         Most of all, thanks to the team behind
