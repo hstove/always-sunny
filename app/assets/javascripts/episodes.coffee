@@ -4,7 +4,6 @@ $ ->
   if $data.length > 0
     data = JSON.parse $data.val()
     series = []
-    console.log data
     for serie, index in data.series
       series.push
         name: "Season #{index + 1}"
@@ -57,6 +56,7 @@ $ ->
         useHTML: true
       yAxis:
         type: 'datetime'
+        reversed: true
         labels:
           format: '{value:%A}'
         title:

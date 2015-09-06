@@ -22,7 +22,7 @@ module EpisodesHelper
         beginning_of_week = DateTime.now.utc.beginning_of_week
         weekday = beginning_of_week + (day_of_week - 1).days
         if episode.offset > 0
-          weekday += (episode.offset * 2).hours
+          weekday -= (episode.offset * 2).hours
         end
 
         time_of_day = beginning_of_week.change(
